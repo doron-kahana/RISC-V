@@ -128,8 +128,8 @@ fast_popcnt8:
 # 
 # Name:         fast_popcnt32
 # Description:  Count ON bits in a 32-bit number using an LUT
-#               The function breaks down the number into 8-bit chunks and calls
-#               fast_popcnt8 four times
+#               The function breaks down the number into four byte chunks and 
+#               calls fast_popcnt8 with each byte
 # I/O:          [in] uint32_t num:  a0 = 32-bit number
 # Return:       number of ON bits in the range [0,32]
 # 
@@ -156,24 +156,24 @@ fast_popcnt32:
     sw s1, 4(sp)            # Store saved register s1 on the stack
     mv s1, a0               # Save 32-bit value before calling fast_popcnt8
 
-    # Call fast_popcnt8 with 1st byte chunk
+    # Call fast_popcnt8 with byte chunk 1/4
     andi a0, a0, 0x000000FF
     call fast_popcnt8
     mv s0, a0
 
-    # Call fast_popcnt8 with 2nd byte chunk
+    # Call fast_popcnt8 with byte chunk 2/4
     srli a0, s1, 8
     andi a0, a0, 0x000000FF
     call fast_popcnt8
     add s0, s0, a0
 
-    # Call fast_popcnt8 with 3rd byte chunk
+    # Call fast_popcnt8 with byte chunk 3/4
     srli a0, s1, 16
     andi a0, a0, 0x000000FF
     call fast_popcnt8
     add s0, s0, a0
 
-    # Call fast_popcnt8 with 3rd byte chunk
+    # Call fast_popcnt8 with byte chunk 4/4
     srli a0, s1, 24
     andi a0, a0, 0x000000FF
     call fast_popcnt8

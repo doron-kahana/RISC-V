@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "superBlink.h"
 
-int main()
+void superBlink(void)
 {
     int error = 0;
     int ledNum = 0;
@@ -18,4 +18,7 @@ int main()
         if(ledNum >= NUM_LEDS)
             ledNum = 0;
     }
+
+    return;
 }
+

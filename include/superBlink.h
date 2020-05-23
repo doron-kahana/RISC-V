@@ -7,6 +7,7 @@
 #define BLUE_LED    (0x200000)
 #define GREEN_LED   (0x080000)
 
-void setupGPIO();
+void superBlink(void);
+void setupGPIO(void);
 int setLED(int color, int state);
 void delay(int millisec);

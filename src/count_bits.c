@@ -6,7 +6,7 @@
 
 #define NUM_TESTS   (1000000)
 
-int main(void)
+int test_count_bits(void)
 {
     static uint32_t bits __attribute__((used)) = 0;
     clock_t end;
@@ -14,7 +14,7 @@ int main(void)
     float seconds = 0.0f;
 
     start = clock();
-    for (uint32_t i = 1; i < NUM_TESTS; i++)
+    for (size_t i = 0; i < NUM_TESTS; i++)
     {
         bits = fast_popcnt32(i);
     }
@@ -23,7 +23,7 @@ int main(void)
     printf("fast_popcnt32 took %f seconds\n", seconds);
 
     start = clock();
-    for (uint32_t i = 1; i < NUM_TESTS; i++)
+    for (size_t i = 0; i < NUM_TESTS; i++)
     {
         bits = popcnt32(i);
     }
