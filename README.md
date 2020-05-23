@@ -14,4 +14,7 @@ Tested on SiFive HiFive1-RevB (RV32IMAC).
 The program blinks LEDs on the SiFive HiFive1-RevB board.
 ### popcount()
 popcount() implementations in RISC-V ASM.
+### Stack
+A simple stack implementation with get_min() support in O(1) time and O(N) space.
+Currently written in mixed C and ASM; Will be converted to pure ASM.
 
